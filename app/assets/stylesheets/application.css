@@ -14,40 +14,99 @@
  *= require_self
  */
 
- /* Styles for the feed */
+/* CSS Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html, body {
+  margin: 0;
+  padding: 0;
+  font-family: Arial, sans-serif;
+}
+
+/* Navbar Styles */
+.navbar {
+  margin-top: 0;
+  padding-top: 0;
+}
+
+.container-fluid {
+  margin-top: 0;
+  padding-top: 0;
+}
+
+/* Notice and Alert Styles */
+.notice, .alert {
+  margin: 0;
+  padding: 10px;
+  text-align: center;
+}
+
+/* Feed Page Styles */
 h1 {
-    margin-bottom: 20px;
-  }
-  
-  h4 {
-    margin-top: 30px;
-    margin-bottom: 10px;
-  }
-  
-  .post {
-    margin-bottom: 20px;
-    padding: 10px;
-    border: 1px solid #ddd;
-    border-radius: 5px;
-  }
-  
-  .post p {
-    margin-bottom: 10px;
-  }
-  
-  .post strong {
-    display: inline;
-  }
-  
-  .post .title,
-  .post .date,
-  .post .body {
-    display: inline;
-    margin-left: 5px;
-  }
-  
-  .post .body {
-    display: block; /* Ensure the body appears on a new line or block */
-    margin-top: 5px; /* Space between the body and other details */
-  }
-  
+  margin-bottom: 20px;
+}
+
+h4 {
+  margin-top: 30px;
+  margin-bottom: 10px;
+}
+
+.post {
+  margin-bottom: 20px;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+}
+
+.post p {
+  margin-bottom: 10px;
+}
+
+.post strong {
+  display: inline;
+}
+
+.post .title,
+.post .date,
+.post .body {
+  display: inline;
+  margin-left: 5px;
+}
+
+.post .body {
+  display: block; /* Ensure the body appears on a new line or block */
+  margin-top: 5px; /* Space between the body and other details */
+}
+
+/* Additional Styles for Consistency */
+body {
+  line-height: 1.6;
+  padding: 20px; /* Add some padding to the body for better spacing */
+}
+
+p {
+  margin-bottom: 15px;
+}
+
+a {
+  color: #007bff;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+/* Add any other custom styles you need below */
+
+/* Footer Styles (if you have one) */
+footer {
+  margin-top: 40px;
+  padding: 20px;
+  background-color: #f8f9fa;
+  text-align: center;
+}
