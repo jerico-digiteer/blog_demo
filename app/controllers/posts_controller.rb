@@ -1,5 +1,9 @@
 class PostsController < ApplicationController
+  before_action :authenticate_user!, except: [:index, :show, :feed]
   before_action :set_post, only: %i[ show edit update destroy ]
+  before_action :authorize_user!, only: %i[edit update destroy]
+
+
 
   # GET /posts or /posts.json
   def feed 
@@ -15,6 +19,7 @@ class PostsController < ApplicationController
 
   # GET /posts/1 or /posts/1.json
   def show
+    @post.update(views: @post.views + 1)
   end
 
   # GET /posts/new
@@ -28,8 +33,8 @@ class PostsController < ApplicationController
 
   # POST /posts or /posts.json
   def create
-    @post = Post.new(post_params)
-
+    @post = current_user.posts.new(post_params)
+  
     respond_to do |format|
       if @post.save
         format.html { redirect_to post_url(@post), notice: "Post was successfully created." }
@@ -41,14 +46,16 @@ class PostsController < ApplicationController
 
   # PATCH/PUT /posts/1 or /posts/1.json
   def update
-    respond_to do |format|
-      if @post.update(post_params)
-        format.html { redirect_to post_url(@post), notice: "Post was successfully updated." }
-        format.json { render :show, status: :ok, location: @post }
-      else
-        format.html { render :edit, status: :unprocessable_entity }
-        format.json { render json: @post.errors, status: :unprocessable_entity }
-      end
+
+
+        respond_to do |format|
+          if @post.update(post_params)
+          format.html { redirect_to post_url(@post), notice: "Post was successfully updated." }
+          format.json { render :show, status: :ok, location: @post }
+        else
+          format.html { render :edit, status: :unprocessable_entity }
+          format.json { render json: @post.errors, status: :unprocessable_entity }
+        end
     end
   end
 
@@ -73,4 +80,11 @@ class PostsController < ApplicationController
       params.require(:post).permit(:title, :body, :active, :featured, :publish_date)
     end
 
+    private
+    def authorize_user!
+      unless @post.user == current_user
+        redirect_to feed_path, alert: "You are not authorized to perform this action."
+      end
+    end
+    
 end

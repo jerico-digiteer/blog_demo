@@ -1,12 +1,17 @@
-div class="post"
+.div.post
   p
     strong Title:
     span.title = post.title
+  p
+    h7 = post.user.email
+  p
+    h6 = pluralize(post.views, "view")
 
   p
     strong Publish date:
     span.date = post.publish_date.strftime("%B %d, %Y")
 
   p
-    
     span.body = post.body
+
+  = link_to "Show this post", post
