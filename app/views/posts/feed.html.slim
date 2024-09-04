@@ -1,0 +1,17 @@
+h1 Feed
+
+h4 Active Posts
+- @active_posts.each do |post|
+  = render 'feed_post', post: post
+
+h4 Featured Posts
+- @featured_posts.each do |post|
+  = render 'feed_post', post: post
+
+h4 Published Today
+- @published_date_posts.each do |post|
+  = render 'feed_post', post: post
+
+
+
+

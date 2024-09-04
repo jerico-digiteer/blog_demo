@@ -2,6 +2,13 @@ class PostsController < ApplicationController
   before_action :set_post, only: %i[ show edit update destroy ]
 
   # GET /posts or /posts.json
+  def feed 
+    published_posts = Post.published 
+    @featured_posts = published_posts.where(active: true, featured: true)
+    @active_posts = published_posts.where(active: true, featured: false)
+    @published_date_posts = published_posts
+  end
+
   def index
     @posts = Post.all
   end
@@ -26,10 +33,8 @@ class PostsController < ApplicationController
     respond_to do |format|
       if @post.save
         format.html { redirect_to post_url(@post), notice: "Post was successfully created." }
-        format.json { render :show, status: :created, location: @post }
       else
         format.html { render :new, status: :unprocessable_entity }
-        format.json { render json: @post.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -65,6 +70,7 @@ class PostsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def post_params
-      params.require(:post).permit(:title, :body)
+      params.require(:post).permit(:title, :body, :active, :featured, :publish_date)
     end
+
 end

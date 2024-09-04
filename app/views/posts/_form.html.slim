@@ -15,4 +15,15 @@
     = form.text_area :body
 
   div
+    = form.label :active, style: "display: block"
+    = form.check_box :active
+
+  div
+    = form.label :featured, style: "display: block"
+    = form.check_box :featured
+
+  div
+    = form.label :publish_date, style: "display: block"
+    = form.date_field :publish_date
+  div
     = form.submit

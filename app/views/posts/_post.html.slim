@@ -1,7 +1,22 @@
 div id="#{dom_id post}"
   p
+    strong Active:
+    =< post.active
+    
+  p
+    strong Featured:
+    =< post.featured
+
+  p
     strong Title:
     =< post.title
+    
+  p
+    strong Publish date:
+    =< post.publish_date.strftime("%B %d, %Y")
+
+    
   p
     strong Body:
     =< post.body
+

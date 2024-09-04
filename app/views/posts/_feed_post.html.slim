@@ -1,0 +1,12 @@
+div class="post"
+  p
+    strong Title:
+    span.title = post.title
+
+  p
+    strong Publish date:
+    span.date = post.publish_date.strftime("%B %d, %Y")
+
+  p
+    
+    span.body = post.body

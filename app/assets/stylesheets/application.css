@@ -13,3 +13,41 @@
  *= require_tree .
  *= require_self
  */
+
+ /* Styles for the feed */
+h1 {
+    margin-bottom: 20px;
+  }
+  
+  h4 {
+    margin-top: 30px;
+    margin-bottom: 10px;
+  }
+  
+  .post {
+    margin-bottom: 20px;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+  }
+  
+  .post p {
+    margin-bottom: 10px;
+  }
+  
+  .post strong {
+    display: inline;
+  }
+  
+  .post .title,
+  .post .date,
+  .post .body {
+    display: inline;
+    margin-left: 5px;
+  }
+  
+  .post .body {
+    display: block; /* Ensure the body appears on a new line or block */
+    margin-top: 5px; /* Space between the body and other details */
+  }
+  

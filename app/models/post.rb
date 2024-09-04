@@ -1,2 +1,4 @@
 class Post < ApplicationRecord
-end
+    scope :published, -> { where("publish_date <= ?", Date.today) }
+  end
+  
