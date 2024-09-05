@@ -10,11 +10,11 @@ class PostsController < ApplicationController
     published_posts = Post.published 
     @featured_posts = published_posts.where(active: true, featured: true)
     @active_posts = published_posts.where(active: true, featured: false)
-    @published_date_posts = published_posts
+    @published_date_posts = published_posts.where("publish_date = ?", Date.today)
   end
 
   def index
-    @posts = Post.all
+    @posts = current_user.posts
   end
 
   # GET /posts/1 or /posts/1.json
