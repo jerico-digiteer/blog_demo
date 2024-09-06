@@ -24,6 +24,7 @@
 
   div
     = form.label :publish_date, style: "display: block"
-    = form.date_field :publish_date
+    = form.date_field :publish_date, value: post.publish_date || Date.today
+
   div
     = form.submit

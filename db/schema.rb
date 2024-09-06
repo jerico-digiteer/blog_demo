@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.2].define(version: 2024_09_05_015534) do
+ActiveRecord::Schema[7.2].define(version: 2024_09_06_032031) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -21,7 +21,7 @@ ActiveRecord::Schema[7.2].define(version: 2024_09_05_015534) do
     t.datetime "updated_at", null: false
     t.boolean "active", default: true
     t.boolean "featured"
-    t.date "publish_date", default: "2024-09-04"
+    t.date "publish_date"
     t.integer "views", default: 0
     t.bigint "user_id", null: false
     t.index ["user_id"], name: "index_posts_on_user_id"

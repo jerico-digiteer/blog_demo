@@ -1,15 +1,14 @@
 div id="#{dom_id post}"
   p
-    strong Title:
+    strong Title: 
     = post.title
   p
     strong Posted by: 
-    = post.user.email
+    = post.user.full_name
   p
     h6 = pluralize(post.views, "view")
   p
-    strong Publish date:
+    strong Published: 
     = post.publish_date.strftime("%B %d, %Y")
   p
-    strong Body:
     = post.body

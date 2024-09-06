@@ -15,6 +15,16 @@ class PostsController < ApplicationController
 
   def index
     @posts = current_user.posts
+
+    if params[:title].present?
+      @posts = @posts.where('title ILIKE ?', "%#{params[:title]}%")
+    end
+
+    if params[:publish_date].present?
+      @posts = @posts.where(publish_date: params[:publish_date])
+    end
+
+    @posts = @posts.order(created_at: :desc)
   end
 
   # GET /posts/1 or /posts/1.json
@@ -51,10 +61,8 @@ class PostsController < ApplicationController
         respond_to do |format|
           if @post.update(post_params)
           format.html { redirect_to post_url(@post), notice: "Post was successfully updated." }
-          format.json { render :show, status: :ok, location: @post }
         else
           format.html { render :edit, status: :unprocessable_entity }
-          format.json { render json: @post.errors, status: :unprocessable_entity }
         end
     end
   end
@@ -65,7 +73,11 @@ class PostsController < ApplicationController
 
     respond_to do |format|
       format.html { redirect_to posts_url, notice: "Post was successfully destroyed." }
-      format.json { head :no_content }
+
+      format.turbo_stream {
+        render turbo_stream: turbo_stream.remove("post_#{@post.id}")
+      }
+
     end
   end
 

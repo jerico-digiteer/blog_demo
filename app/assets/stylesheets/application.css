@@ -55,11 +55,22 @@ h4 {
   margin-bottom: 10px;
 }
 
+/* Post Container Styles */
+.container-post {
+  margin-bottom: 20px;
+  padding: 15px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  background-color: #f9f9f9;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
 .post {
   margin-bottom: 20px;
   padding: 10px;
   border: 1px solid #ddd;
   border-radius: 5px;
+  background-color: #fff;
 }
 
 .post p {
@@ -80,6 +91,30 @@ h4 {
 .post .body {
   display: block; /* Ensure the body appears on a new line or block */
   margin-top: 5px; /* Space between the body and other details */
+}
+
+/* Button Styles */
+.btn {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  font-size: 16px;
+  cursor: pointer;
+  text-decoration: none;
+  color: #fff;
+}
+
+.btn-primary {
+  background-color: #007bff;
+}
+
+.btn-info {
+  background-color: #17a2b8;
+}
+
+.btn-primary:hover,
+.btn-info:hover {
+  opacity: 0.9;
 }
 
 /* Additional Styles for Consistency */
