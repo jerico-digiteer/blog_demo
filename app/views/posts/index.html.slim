@@ -1,25 +1,26 @@
 h1 Posts
 
-= button_to "New Post", new_post_path, method: :get, class: 'btn btn-primary'
+div#new_post
+  = render partial: "posts/form", locals: { post: Post.new }
 
 |
 
 #filter-form
-  = form_with(url: posts_path, method: :get, data: { turbo_frame: 'posts' }) do |form|
-    .mb-3
-      = form.label :title, "Search by title:"
-      = form.text_field :title, class: 'form-control'
+= form_with(url: posts_path, method: :get, data: { turbo_frame: 'posts' }) do |form|
+  .mb-3
+    = form.label :title, "Search by title:"
+    = form.text_field :title, class: 'form-control'
 
-    .mb-3
-      = form.label :publish_date, "Filter by date:"
-      = form.date_field :publish_date, class: 'form-control'
+  .mb-3
+    = form.label :publish_date, "Filter by date:"
+    = form.date_field :publish_date, class: 'form-control'
 
-    = form.submit "Filter", class: 'btn btn-primary'
+  = form.submit "Filter", class: 'btn btn-primary'
 
-#posts
-  = turbo_frame_tag 'posts' do
-    - @posts.each do |post|
-      .container-post
-        == render post
-        div.test#post
-          = link_to "Show this post", post, class: 'btn btn-info', data: { turbo: 'false' }
+#post-list
+= turbo_frame_tag 'posts' do
+  - @posts.each do |post|
+    .container-post
+      == render post
+      div.test#post
+        = link_to "Show this post", post, class: 'btn btn-info', data: { turbo: 'false' }

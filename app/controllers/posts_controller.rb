@@ -47,8 +47,22 @@ class PostsController < ApplicationController
   
     respond_to do |format|
       if @post.save
+        format.turbo_stream do
+          render turbo_stream: [
+            turbo_stream.update('new_post', 
+                                partial: 'posts/form', 
+                                locals: {post: Post.new})
+          ]
+        
+        end 
         format.html { redirect_to post_url(@post), notice: "Post was successfully created." }
       else
+        format.turbo_stream do
+          render turbo_stream: [
+            turbo_stream.update('new_post', partial: 'posts/form', locals: {post: @post})
+          ]
+        
+        end 
         format.html { render :new, status: :unprocessable_entity }
       end
     end

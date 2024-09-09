@@ -14,9 +14,10 @@
 
   - if user_signed_in? && current_user.id == @post.user_id
     = link_to "Edit this post", edit_post_path(@post), class: 'btn btn-warning', data: { turbo: 'false' }
-    = button_to "Destroy this post", @post, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger'
+    = button_to "Destroy this post", @post, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger', data: { turbo: 'false' }
 
   div
     = link_to "Back to posts ", posts_path, data: { turbo: 'false' }
     ' | 
     = link_to "Back to feed", feed_path, data: { turbo: 'false' }
+
