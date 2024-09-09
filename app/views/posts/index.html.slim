@@ -18,9 +18,7 @@ div#new_post
   = form.submit "Filter", class: 'btn btn-primary'
 
 #post-list
+div#all_posts
 = turbo_frame_tag 'posts' do
   - @posts.each do |post|
-    .container-post
       == render post
-      div.test#post
-        = link_to "Show this post", post, class: 'btn btn-info', data: { turbo: 'false' }
