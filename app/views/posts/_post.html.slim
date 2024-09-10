@@ -1,4 +1,4 @@
-div id="#{dom_id post}"
+div.container-post id="#{dom_id post}"
   p
     strong Title: 
     = post.title
@@ -12,3 +12,5 @@ div id="#{dom_id post}"
     = post.publish_date.strftime("%B %d, %Y")
   p
     = post.body
+  div.test#post
+    = link_to "Show this post", post, class: 'btn btn-info', data: { turbo: 'false' }

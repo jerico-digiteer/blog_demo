@@ -20,7 +20,4 @@ div#new_post
 #post-list
 = turbo_frame_tag 'posts' do
   - @posts.each do |post|
-    .container-post
       == render post
-      div.test#post
-        = link_to "Show this post", post, class: 'btn btn-info', data: { turbo: 'false' }
