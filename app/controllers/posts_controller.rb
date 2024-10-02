@@ -10,7 +10,7 @@ class PostsController < ApplicationController
     published_posts = Post.published 
     @featured_posts = published_posts.where(active: true, featured: true)
     @active_posts = published_posts.where(active: true, featured: false)
-    @published_date_posts = published_posts.where("publish_date = ?", Date.today)
+    @published_date_posts = published_posts.where("publish_date = ? AND active = ?", Date.today, true)
   end
 
   def index
